@@ -12,7 +12,7 @@ if env_file.exists():
     env.read_env(str(env_file))
 
 SECRET_KEY = env('SECRET_KEY', default='replace-me')
-DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 
