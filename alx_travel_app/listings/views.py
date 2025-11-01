@@ -11,6 +11,15 @@ class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
 
+    from .tasks import send_booking_confirmation_email
+
+    def perform_create(self, serializer):
+        booking = serializer.save()
+        user_email = booking.user.email
+        booking_details = f"Destination: {booking.destination}\nDate: {booking.date}\nPrice: {booking.price}"
+        self.send_booking_confirmation_email.delay(user_email, booking_details)
+
+
 
 import os
 import time

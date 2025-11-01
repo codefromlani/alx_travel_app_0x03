@@ -102,3 +102,19 @@ python manage.py runserver
   "amount": "240.00"
 }
 
+## Background Tasks with Celery and RabbitMQ
+
+### Run RabbitMQ
+```bash
+docker run -d --hostname my-rabbit --name rabbitmq -p 5672:5672 rabbitmq:3
+```
+
+### Start Celery
+```bash
+celery -A alx_travel_app worker -l info
+```
+
+### Start Django
+```bash
+python manage.py runserver
+```
