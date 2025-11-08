@@ -115,3 +115,5 @@ CELERY_TIMEZONE = 'UTC'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'no-reply@alxtravel.com'
+
+LOGIN_URL = '/admin/login/'
